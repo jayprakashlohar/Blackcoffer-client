@@ -7,7 +7,7 @@ import {
   LinearScale,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import { Box } from "@chakra-ui/react";
 
 ChartJS.register(BarElement, Tooltip, Legend, CategoryScale, LinearScale);
