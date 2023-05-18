@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   BarElement,
@@ -12,12 +12,13 @@ import { Box } from "@chakra-ui/react";
 
 ChartJS.register(BarElement, Tooltip, Legend, CategoryScale, LinearScale);
 
-const BarChart = ({ data }) => {
+const CountryChart = ({ data }) => {
+  //Intensity
   var chartData = {
-    labels: data?.data?.map((x) => x.sector),
+    labels: data?.data?.map((x) => (x.country.length ? x.country : null)),
     datasets: [
       {
-        label: "Sector Vs Intensity",
+        label: "Intensity of Different Country",
         data: data?.data?.map((x) => x.intensity),
         backgroundColor: [createColor(255)],
       },
@@ -48,14 +49,10 @@ const BarChart = ({ data }) => {
   }
 
   return (
-    <>
-      <Box>
-        <Box border="1px solid teal" bg="#ffff" borderRadius="10px">
-          <Bar data={chartData} options={options} />
-        </Box>
-      </Box>
-    </>
+    <Box border="1px solid teal" bg="#ffff" borderRadius="10px">
+      <Bar data={chartData} options={options} />
+    </Box>
   );
 };
 
-export default BarChart;
+export default CountryChart;
